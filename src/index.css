@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-gray-50 text-navy-900 font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-soft border border-gray-100;
+  }
+  .card-lg {
+    @apply bg-white rounded-3xl shadow-medium border border-gray-100;
+  }
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-md border border-white/60;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-navy-900 text-white font-medium text-sm transition-all hover:bg-navy-800 hover:shadow-medium active:scale-95;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white text-navy-800 font-medium text-sm border border-gray-200 transition-all hover:bg-gray-50 hover:shadow-soft active:scale-95;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-medical-600 text-white font-medium text-sm transition-all hover:bg-medical-700 hover:shadow-medium active:scale-95;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-danger-600 text-white font-medium text-sm transition-all hover:bg-danger-700 hover:shadow-medium active:scale-95;
+  }
+  .status-dot {
+    @apply inline-flex items-center gap-1.5 text-xs font-medium;
+  }
+  .status-dot::before {
+    content: '';
+    @apply inline-block w-2 h-2 rounded-full;
+  }
+  .status-ready::before { @apply bg-safe-500; }
+  .status-active::before { @apply bg-medical-500 animate-pulse-soft; }
+  .status-warn::before { @apply bg-warn-500; }
+  .status-offline::before { @apply bg-gray-400; }
+  .status-danger::before { @apply bg-danger-500; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d9e2ec;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bcccdc;
+}
+
+/* Air cell texture */
+.air-cell {
+  background: linear-gradient(90deg,
+    #bfdbfe 0%, #dbeafe 15%, #bfdbfe 30%, #dbeafe 45%, #bfdbfe 60%, #dbeafe 75%, #bfdbfe 100%);
+  background-size: 200% 100%;
+}
+
+/* Smooth transitions for bed components */
+.bed-transition {
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Perspective container for 3D effect */
+.perspective-container {
+  perspective: 1200px;
+  perspective-origin: center 30%;
+}
+
+/* Washing animation keyframes */
+@keyframes wash-flow {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(60px); }
+}
+
+@keyframes wash-supply {
+  0% { transform: translateX(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes waste-flow {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(20px); }
+}
